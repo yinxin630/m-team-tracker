@@ -12,11 +12,13 @@ export type MTeamTorrent = {
     discountEndTime: null | string;
   };
   imageList: string[];
+  createdDate: string;
 };
 
 export async function searchMTeamTorrents(
   pageNumber: number,
   pageSize: number,
+  keyword?: string,
 ): Promise<MTeamTorrent[]> {
   const res = await axios.post(
     'https://api.m-team.io/api/torrent/search',
@@ -26,6 +28,7 @@ export async function searchMTeamTorrents(
       pageSize,
       visible: 1,
       categories: [],
+      keyword,
     },
     {
       headers: {

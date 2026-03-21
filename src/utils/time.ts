@@ -5,3 +5,11 @@ export function isEndTimeGreaterThanTwoDays(endTime: string) {
 
   return endTimeDate - now > twoDays;
 }
+
+export function isWithinLastThreeDays(targetTime: string) {
+  const twoDays = 3 * 24 * 60 * 60 * 1000;
+  const targetTimeDate = new Date(targetTime).getTime();
+  const now = new Date().getTime();
+
+  return now - targetTimeDate < twoDays;
+}
